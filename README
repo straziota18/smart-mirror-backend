@@ -1,0 +1,4 @@
+Backend for smart mirror. Serves the following purposes:
+- Simple API to host Angular APP
+- Hosts widget configuration and sends updates to connected browser clients
+- Recovers information for various widgets
