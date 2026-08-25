@@ -30,6 +30,10 @@ async def websocket_endpoint(ws: WebSocket):
             data = await ws.receive_json()
             if data['msg'] == 'update_widget':
                 await client_manager.update_widget(user_id, data['data'])
+            if data['msg'] == 'new_widget':
+                await client_manager.new_widget(data['data'])
+            if data['msg'] == 'delete_widget':
+                await client_manager.delete_widget(data['data'])
     except WebSocketDisconnect:
         client_manager.unregister(user_id)
 
