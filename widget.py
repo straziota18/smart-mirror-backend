@@ -51,25 +51,30 @@ def build_widget(
         **kwargs
 ) -> Widget:
     widget_id = str(uuid.uuid4())
+    rand_x = random.randint(0, 80) / 100
+    rand_y = random.randint(0, 80) / 100
     if widget_type == 'time':
         return TimeWidget(
             widget_id,
-            random.randint(0, 80),
-            random.randint(0, 80),
+            rand_x,
+            rand_y,
+            kwargs.pop('size', 10),
             **kwargs
         )
     if widget_type == 'date':
         return DateWidget(
             widget_id,
-            random.randint(0, 80),
-            random.randint(0, 80),
+            rand_x,
+            rand_y,
+            kwargs.pop('size', 10),
             **kwargs
         )
     if widget_type == 'weather':
         return WeatherWidget(
             widget_id,
-            random.randint(0, 80),
-            random.randint(0, 80),
+            rand_x,
+            rand_y,
+            kwargs.pop('size', 10),
             **kwargs
         )
     raise Exception(f'unknown widget "{widget_type}"')
