@@ -4,7 +4,7 @@ from typing import Literal
 
 import tzlocal
 
-WidgetType = Literal['time', 'date']
+WidgetType = Literal['time', 'date', 'weather']
 
 
 class Widget:
@@ -83,15 +83,15 @@ def build_widget(
 class WeatherWidget(Widget):
     widget_type = 'weather'
 
-    def __init__(self, widget_id, x, y, size, city, unit):
+    def __init__(self, widget_id, x, y, size, open_meteo_id, unit):
         super().__init__(widget_id, x, y, size)
-        self.city = city
+        self.open_meteo_id = open_meteo_id
         self.unit = unit
 
     def to_json(self):
         result = super().to_json()
         result['unit'] = self.unit
-        result['city'] = self.city
+        result['open_meteo_id'] = self.open_meteo_id
         return result
 
 
